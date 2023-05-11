@@ -264,63 +264,6 @@ def trivial_kfn_search(
     return D, I
 
 
-def mean_dist_profile(
-    feats: torch.tensor, k: int, incl: int, dist: str = "ed"
-) -> typing.Tuple[torch.Tensor, torch.Tensor]:
-    X_i = ktorch.LazyTensor(feats[:, None, :])
-    X_j = ktorch.LazyTensor(feats[None, :, :])
-    indices = torch.arange(len(feats), device=feats.device).float()
-    I_i = ktorch.LazyTensor(indices[:, None, None])
-    I_j = ktorch.LazyTensor(indices[None, :, None])
-    Diag_ij = (I_i - I_j).abs() - float(incl)
-    if dist == "ed":
-        D_ij = ((X_i - X_j) ** 2).sum(-1)
-    elif dist == "dot":
-        D_ij = 1 - (X_i * X_j).sum(-1)
-    else:
-        raise ValueError(f"Invalid dist mode '{dist}'!")
-    D_ij = Diag_ij.ifelse(0, D_ij)
-    if dist == "ed":
-        D = D_ij.sqrt().sum(dim=1) / len(feats)
-    else:
-        D = D_ij.sum(dim=1) / len(feats)
-    return D
-
-
-def cross_knn_search(
-    A: torch.Tensor, B: torch.Tensor, k: int, dist: str = "ed"
-) -> typing.Tuple[torch.Tensor, torch.Tensor]:
-    X_i = ktorch.LazyTensor(A[:, None, :])
-    X_j = ktorch.LazyTensor(B[None, :, :])
-    if dist == "ed":
-        D_ij = ((X_i - X_j) ** 2).sum(-1)
-        D, I = D_ij.Kmin_argKmin(K=k, dim=1)
-        D = torch.sqrt(D)
-    elif dist == "dot":
-        D_ij = (X_i * X_j).sum(-1)
-        D, I = (-D_ij).Kmin_argKmin(K=k, dim=1)
-        D *= -1
-    else:
-        raise ValueError(f"Invalid dist mode '{dist}'!")
-    return D, I
-
-
-def cross_knn_search_index_only(
-    A: torch.Tensor, B: torch.Tensor, k: int, dist: str = "ed"
-) -> typing.Tuple[torch.Tensor, torch.Tensor]:
-    X_i = ktorch.LazyTensor(A[:, None, :])
-    X_j = ktorch.LazyTensor(B[None, :, :])
-    if dist == "ed":
-        D_ij = ((X_i - X_j) ** 2).sum(-1)
-        I = D_ij.argKmin(K=k, dim=1)
-    elif dist == "dot":
-        D_ij = (X_i * X_j).sum(-1)
-        I = (-D_ij).argKmin(K=k, dim=1)
-    else:
-        raise ValueError(f"Invalid dist mode '{dist}'!")
-    return I
-
-
 #############################################
 # triangular and banded-triangular kNN searches
 #############################################

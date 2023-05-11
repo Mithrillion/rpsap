@@ -1,10 +1,11 @@
 import torch
 from sklearn.decomposition import PCA
 
-from tsprofiles.functions import extract_td_embeddings
-from tsprofiles.functions import exclusion_knn_search
+from ts_search.functions import extract_td_embeddings
+from ts_search.functions import exclusion_knn_search
 
 
+# find false nearest neighbour score
 def tdpca_fnn(X, k, excl, d_pca, d_max):
     X_td = extract_td_embeddings(X, 1, d_pca, 1, "p_td").squeeze()
     pca = PCA()

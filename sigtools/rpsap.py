@@ -1,5 +1,4 @@
 from sigtools.signed_areas import *
-from sigtools.sigconv import *
 from sigtools.transforms import *
 
 
@@ -20,18 +19,18 @@ RPSAPResult = namedtuple(
 
 
 def rpsap(
-    X,
-    d,
-    n_pcs,
-    w,
-    W,
-    k,
-    gap,
-    agg_win,
-    threshold,
-    min_agg_win=None,
-    label_mode="directions",
-    trivial_threshold=None,
+    X: torch.Tensor,
+    d: int,
+    n_pcs: int,
+    w: int,
+    W: int,
+    k: int,
+    gap: int,
+    agg_win: int,
+    threshold: float,
+    min_agg_win: int = None,
+    label_mode: str = "directions",
+    trivial_threshold: float = None,
 ):
     assert label_mode in ["persistence", "directions", "union", "intersection"]
     min_agg_win = w if min_agg_win is None else min_agg_win

@@ -4,7 +4,7 @@ import torch
 from iisignature import prepare, logsigtosig
 
 # import pykeops.torch as ktorch
-from tsprofiles.functions import *
+from ts_search.functions import *
 from .transforms import rescale_path, unorm, rescale_signature, rectify_signature
 from .tensor_product import tensor_exp, prepare_tensor_product
 

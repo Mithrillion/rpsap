@@ -10,8 +10,7 @@ from .transforms import unorm
 from collections import namedtuple
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-from tsprofiles.functions import (
-    extract_td_embeddings,
+from ts_search.functions import (
     trivial_kfn_search,
     radius_exclusion_knn_search,
     tri_knn_search

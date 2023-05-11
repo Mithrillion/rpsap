@@ -17,9 +17,6 @@ from sigtools.signed_areas import *
 # from NASC import maxNASC
 import optuna
 
-# hv.extension("bokeh")
-# hv.opts.defaults(hv.opts.Curve(width=800, height=250))
-
 fs = 50
 
 
@@ -178,35 +175,3 @@ last_best = {'n_pcs': 6,
  'min_threshold': 0.05,
  'trivial_threshold': 0.04,
  'enforce_min': True}
-
-# old
-
-# {'n_pcs': 8,
-#  'd': 34,
-#  'w': 60,
-#  'W': 250,
-#  'k': 8,
-#  'gap': 33,
-#  'agg_win': 850,
-#  'mean_threshold': 0.97,
-#  'trivial_threshold': 0.14}
-
-# {'w': 75,
-#  'W': 800,
-#  'k': 10,
-#  'gap': 15,
-#  'agg_win': 350,
-#  'mean_threshold': 0.995,
-#  'min_threshold': 0.25,
-#  'trivial_threshold': 0.04}
-
-# {'w': 60,
-#  'W': 950,
-#  'k': 7,
-#  'gap': 34,
-#  'min_agg_win': 35,
-#  'agg_win': 800,
-#  'mean_threshold': 0.98,
-#  'min_threshold': 0.35000000000000003,
-#  'trivial_threshold': 0.02,
-#  'enforce_min': True}
