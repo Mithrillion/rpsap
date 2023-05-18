@@ -1,3 +1,7 @@
+###########################################################################
+# script for finding the optimal RPSAP params and label smoothing on RecoFit
+###########################################################################
+
 import sys
 from pathlib import Path
 import pandas as pd
@@ -7,14 +11,12 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 # sys.path.append("../external/")
 sys.path.append("..")
 sys.path.append("../..")
-# from STEM import SSPDetector as ssp
 
 from wavetools import lowpass_filtering
 from Recofit_commons import *
 from sigtools.transforms import *
 from sigtools.signed_areas import *
 
-# from NASC import maxNASC
 import optuna
 
 fs = 50
@@ -162,7 +164,7 @@ study.optimize(objective, n_trials=160, n_jobs=2)
 
 best_f1 = objective(study.best_trial)
 
-# new
+# reference params
 
 last_best = {'n_pcs': 6,
  'w': 50,

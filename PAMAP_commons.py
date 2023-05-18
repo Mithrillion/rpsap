@@ -1,12 +1,9 @@
 #%%
 import os
-import sys
 import pandas as pd
 import holoviews as hv
 import numpy as np
 from sklearn.decomposition import PCA
-
-sys.path.append("external/mSIMPAD/")
 
 data_folder = "../external/PAMAP2_Dataset/Protocol"
 acc_features = ["acc_x", "acc_y", "acc_z"]
