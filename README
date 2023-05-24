@@ -1,0 +1,9 @@
+This is the experiment code and supplementary material for the Paper "Quasi-periodicity Detection via Repetition Invariance of Path Signatures".
+
+The scripts OPT\_{dataset}\_{algorithm}_eval.py are used for hyperparameter search with Optuna to find the best hyperparameter options for each algorithm. the {dataset}\_{algorithm}\_eval.py scripts are used for evaluating performance with optimised hyperparameter settings. Recofit\_random\_drop\_full\_comparison.py performs the synthetic warping experiment using random drop as in the paper.
+
+supplementary.pdf is the supplementary material for the paper.
+
+env.yml can be able to set up the right conda environment. Run `conda env create -f env.yml` to create a conda environment from the file. You may also use *mamba* to speed up dependency resolution. The current YAML file is set up assuming CUDA is available, but the experiments should still run without GPU. Remove the CUDA dependencies if needed.
+
+To perform comparison with R-SIMPAD, clone the repository https://github.com/chuntungli/STEM as external/STEM.
