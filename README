@@ -2,6 +2,8 @@ This is the experiment code and supplementary material for the Paper "Quasi-peri
 
 The scripts OPT_{dataset}_{algorithm}_eval.py are used for hyperparameter search with Optuna to find the best hyperparameter options for each algorithm. the {dataset}_{algorithm}_eval.py scripts are used for evaluating performance with optimised hyperparameter settings. Recofit_random_drop_full_comparison.py performs the synthetic warping experiment using random drop as in the paper.
 
+The PAMAP2 and RecoFit datasets should be placed under external/. They can be acquired from https://archive.ics.uci.edu/ml/datasets/pamap2+physical+activity+monitoring and https://msropendata.com/datasets/799c1167-2c8f-44c4-929c-227bf04e2b9a, respectively.
+
 supplementary.pdf is the supplementary material for the paper.
 
 env.yml can be able to set up the right conda environment. Run `conda env create -f env.yml` to create a conda environment from the file. You may also use *mamba* to speed up dependency resolution. The current YAML file is set up assuming CUDA is available, but the experiments should still run without GPU. Remove the CUDA dependencies if needed.
